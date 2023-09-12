@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -21,7 +22,7 @@ public class BoardController {
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute BoardDTO boardDTO) {
+    public String save(@ModelAttribute BoardDTO boardDTO) throws IOException {
         boardService.save(boardDTO);
         return "redirect:/board/";
     }
@@ -45,28 +46,29 @@ public class BoardController {
         return "boardPages/boardDetail";
     }
 
-
     @GetMapping("/update")
-    public String updateForm(@RequestParam("id") Long id, Model model){
+    public String updateForm(@RequestParam("id") Long id, Model model) {
         BoardDTO boardDTO = boardService.findById(id);
         model.addAttribute("board", boardDTO);
         return "boardPages/boardUpdate";
     }
 
-
     @PostMapping("/update")
-    public String update(@ModelAttribute BoardDTO boardDTO, Model model){
+    public String update(@ModelAttribute BoardDTO boardDTO, Model model) {
         boardService.update(boardDTO);
         BoardDTO dto = boardService.findById(boardDTO.getId());
-        model.addAttribute("board",dto);
+        model.addAttribute("board", dto);
         return "boardPages/boardDetail";
+//        return "redirect:/board?id=" + boardDTO.getId();
     }
 
-
     @GetMapping("/delete")
-    public String delete(@RequestParam("id") Long id){
+    public String delete(@RequestParam("id") Long id) {
         boardService.delete(id);
         return "redirect:/board/";
     }
+
+
+
 
 }
