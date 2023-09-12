@@ -12,6 +12,7 @@
         <input type="text" name="boardPass" id="board-pass" placeholder="비밀번호를 입력하세요"> <br>
         <textarea name="boardContents" cols="30" rows="10">${board.boardContents}</textarea> <br>
         <input type="button" value="수정" onclick="board_update()">
+
     </form>
 </div>
 </body>

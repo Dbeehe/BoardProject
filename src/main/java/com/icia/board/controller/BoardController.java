@@ -63,24 +63,10 @@ public class BoardController {
     }
 
 
-
-
-
-
-
-
-
-
-    @GetMapping("/deleteCheck")
-    public String deleteForm(){
-        return "boardPages/deleteCheck";
-    }
-
-
     @GetMapping("/delete")
-    public String delete(@RequestParam("boardPass") String boardPass){
-        boardService.delete(boardPass);
-        return "redirect:/";
+    public String delete(@RequestParam("id") Long id){
+        boardService.delete(id);
+        return "redirect:/board/";
     }
 
 }

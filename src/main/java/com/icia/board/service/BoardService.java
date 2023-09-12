@@ -22,9 +22,6 @@ public class BoardService {
     }
 
 
-    public void delete(String boardPass) {
-        boardRepository.delete(boardPass);
-    }
 
     public void updateHits(Long id) {
         boardRepository.updateHits(id);
@@ -41,5 +38,9 @@ public class BoardService {
 
     public void update(BoardDTO boardDTO) {
         boardRepository.update(boardDTO);
+    }
+
+    public void delete(Long id) {
+        boardRepository.delete(id);
     }
 }
