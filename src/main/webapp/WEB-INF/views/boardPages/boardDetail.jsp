@@ -34,8 +34,10 @@
             <tr>
                 <th>image</th>
                 <td>
-                    <img src="${pageContext.request.contextPath}/upload/${boardFile.storedFileName}"
-                         alt="" width="100" height="100">
+                    <c:forEach items="${boardFileList}" var="boardFile">
+                        <img src="${pageContext.request.contextPath}/upload/${boardFile.storedFileName}"
+                             alt="" width="100" height="100">
+                    </c:forEach>
                 </td>
             </tr>
         </c:if>
@@ -44,7 +46,7 @@
     <button onclick="board_update()">수정</button>
     <button onclick="board_delete()">삭제</button>
 
-    <div id="pass-check">
+    <div id="pass-check" style="display: none;">
         <input type="text" id="board-pass" placeholder="비밀번호 입력하세요">
         <input type="button" onclick="pass_check()" value="확인">
     </div>
